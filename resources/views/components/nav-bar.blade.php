@@ -13,7 +13,7 @@
                             class=" {{ request() -> is('/') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}"
                             aria-current="page">Home</a> --}}
                             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                            <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
+                            <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
                             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
                             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
 
@@ -112,14 +112,18 @@
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+            <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
+            <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
+            <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+            {{-- <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 aria-current="page">Home</a>
             <a href="#"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Blog</a>
             <a href="#"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
             <a href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a> --}}
             {{-- <a href="#"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a> --}}
         </div>

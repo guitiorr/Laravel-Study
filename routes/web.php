@@ -14,8 +14,8 @@ Route::get('/about', function() {
     return view('about', ['nama' => 'Tio'], ['title' => 'About']);
 });
 
-Route::get('/blog', function() {
-    return view('blog', ['title' => 'Blog', 'posts' => [
+Route::get('/posts', function() {
+    return view('posts', ['title' => 'Posts', 'posts' => [
         [
             'title' => 'Judul Artikel 1',
             'author' => 'Cristiano Budi',
