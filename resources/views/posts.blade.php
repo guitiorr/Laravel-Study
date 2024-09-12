@@ -35,7 +35,7 @@
             <a href="#">{{ $post ['author'] }}</a> | {{ $post ['date'] }}
         </div>
         <p class="my-4 font-light">
-            {{ $post ['body'] }}
+            {{ Str::limit($post ['body'], 230) }}
         </p>
         <a href="" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
     </article>
