@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,4 +23,8 @@
     </div>
 
 </body>
-</html>
+</html> --}}
+<x-layout>
+    <x-slot:title>{{ $title }}</x-slot:title>
+    <h3 class="">Connect with me!</h3>
+</x-layout>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,4 +18,9 @@
     @endphp </h3>
     <img src="img/jem.png" alt="Gambar jem" class="">
 </body>
-</html>
+</html> --}}
+
+<x-layout>
+    <x-slot:title>{{ $title }}</x-slot:title>
+    <h3 class="">This is the about page</h3>
+</x-layout>
