@@ -27,18 +27,20 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     {{-- <h3 class="">Welcome to my blog!</h3> --}}
 
+    @foreach($posts as $post)
+
     <article class="py-8 max-w-screen-md border-b border-gray-300">
-        <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">Judul Artikel 1</h2>
+        <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $post ['title'] }}</h2>
         <div class="text-base text-gray-500">
-            <a href="#">Cristiano Budi</a> | 1 January 2024
+            <a href="#">{{ $post ['author'] }}</a> | {{ $post ['date'] }}
         </div>
         <p class="my-4 font-light">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio sapiente eligendi harum. Expedita quia, voluptates totam odit distinctio voluptas beatae, nam maiores optio est at, eum impedit dolor velit unde?
+            {{ $post ['body'] }}
         </p>
         <a href="" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
     </article>
 
-    <article class="py-8 max-w-screen-md border-b border-gray-300">
+    {{-- <article class="py-8 max-w-screen-md border-b border-gray-300">
         <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">Judul Artikel 2</h2>
         <div class="text-base text-gray-500">
             <a href="#">Cristiano Budi</a> | 2 February 2024
@@ -47,6 +49,8 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quidem perspiciatis facilis porro, dolorem nemo neque, fugiat sequi dolores nulla delectus, ipsa asperiores culpa! Eveniet labore non perferendis rerum esse?
         </p>
         <a href="" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
-    </article>
+    </article> --}}
+
+    @endforeach
 
 </x-layout>
