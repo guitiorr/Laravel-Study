@@ -23,4 +23,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <h3 class="">This is the about page</h3>
+    <h3 class="">Owner: {{ $nama }} </h3>
+    <img src="img/jem.png" alt="Gambar jem" class="">
 </x-layout>
