@@ -19,6 +19,7 @@ Route::get('/posts', function() {
     return view('posts', ['title' => 'Posts', 'posts' => [
         [
             'id' => '1',
+            'slug' => 'judul-artikel-1',
             'title' => 'Judul Artikel 1',
             'author' => 'Cristiano Budi',
             'body' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quidem perspiciatis facilis porro, dolorem nemo neque, fugiat sequi dolores nulla delectus, ipsa asperiores culpa! Eveniet labore non perferendis rerum esse?',
@@ -26,6 +27,7 @@ Route::get('/posts', function() {
         ],
         [
             'id' => 2,
+            'slug' => 'judul-artikel-2',
             'title' => 'Judul Artikel 2',
             'author' => 'Cristiano Budi',
             'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio sapiente eligendi harum. Expedita quia, voluptates totam odit distinctio voluptas beatae, nam maiores optio est at, eum impedit dolor velit unde?',
@@ -34,11 +36,12 @@ Route::get('/posts', function() {
     ]]);
 });
 
-Route::get('/posts/{id}', function($id){
+Route::get('/posts/{slug}', function($slug){
     //  dd($id);
     $posts = [
         [
             'id' => '1',
+            'slug' => 'judul-artikel-1',
             'title' => 'Judul Artikel 1',
             'author' => 'Cristiano Budi',
             'body' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quidem perspiciatis facilis porro, dolorem nemo neque, fugiat sequi dolores nulla delectus, ipsa asperiores culpa! Eveniet labore non perferendis rerum esse?',
@@ -46,6 +49,7 @@ Route::get('/posts/{id}', function($id){
         ],
         [
             'id' => 2,
+            'slug' => 'judul-artikel-2',
             'title' => 'Judul Artikel 2',
             'author' => 'Cristiano Budi',
             'body' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio sapiente eligendi harum. Expedita quia, voluptates totam odit distinctio voluptas beatae, nam maiores optio est at, eum impedit dolor velit unde?',
@@ -53,8 +57,8 @@ Route::get('/posts/{id}', function($id){
         ]
         ];
 
-        $post = Arr::first($posts, function($post) use ($id) {
-            return $post['id'] == $id;
+        $post = Arr::first($posts, function($post) use ($slug) {
+            return $post['slug'] == $slug;
         });
 
         // dd($post);
