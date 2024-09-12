@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(25, 23, 37);
+}
+
+a {
+    color: white;
+}
+
+.head h1 {
+    text-align: center;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+    font-size: 55px;
+}
+
+.github img {
+    margin-right: 20px;
+    width: 250px;
+    height: 150px;
+    background-color: white;
+}
+
+.github {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.github a {
+    color: white !important;
+    font-size: 40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
