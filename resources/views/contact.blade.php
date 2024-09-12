@@ -4,17 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About page</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Contact</title>
 </head>
 <body>
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/blog">Blog</a>
-    <h1>About page</h1>
-    <h3 class="">Owner: @php
-        echo $nama
-    @endphp </h3>
-    <img src="img/jem.png" alt="Gambar jem" class="">
 </body>
 </html>
