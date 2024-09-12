@@ -13,12 +13,16 @@
                             class=" {{ request() -> is('/') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}"
                             aria-current="page">Home</a> --}}
                             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                        <a href="/blog"
+                            <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
+                            <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
+                            <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+
+                        {{-- <a href="/blog"
                         class=" {{ request() -> is('blog') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Blog</a>
                         <a href="/about"
                         class=" {{ request() -> is('about') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">About</a>
                         <a href="/contact"
-                        class=" {{ request() -> is('contact') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Contact</a>
+                        class=" {{ request() -> is('contact') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Contact</a> --}}
                         {{-- <a href="#"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a> --}}
                     </div>
