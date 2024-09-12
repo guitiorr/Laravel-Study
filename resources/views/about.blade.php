@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>About page</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylehomeabout.css">
 </head>
 <body>
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/blog">Blog</a>
-    <h1>About page</h1>
-    <h3 class="">Owner: @php
+    <a href="/contact" class="">Contact</a>
+    <h1 style="color: white">About page</h1>
+    <h3 class="" style="color: white">Owner: @php
         echo $nama
     @endphp </h3>
     <img src="img/jem.png" alt="Gambar jem" class="">
