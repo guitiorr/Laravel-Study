@@ -27,9 +27,10 @@ class Post{
     }
 
     public static function find($slug){
-        return Arr::first(Post::all(), function($post) use ($slug) {
-            return $post['slug'] == $slug;
-        });
+        // return Arr::first(Post::all(), function($post) use ($slug) {
+        //     return $post['slug'] == $slug;
+        // });
+        return Arr::first(Post::all(), fn($post) => $post['slug'] == $slug);
     }
 
 }
