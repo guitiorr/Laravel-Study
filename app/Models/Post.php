@@ -37,5 +37,5 @@ class Post extends Model{ //tabel posts
     //     }
     //     return $post;
     // }
-
+    protected $fillable = ['title', 'author', 'slug', 'body'];
 }
