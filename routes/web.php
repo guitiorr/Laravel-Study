@@ -20,14 +20,14 @@ Route::get('/posts', function() {
     return view('posts', ['title' => 'Posts', 'posts' => Post::all()]);
 });
 
-Route::get('/posts/{slug}', function($slug){
+Route::get('/posts/{slug}', function($id){
     //  dd($id);
         // $post = Arr::first(Post::all(), function($post) use ($slug) {
         //     return $post['slug'] == $slug;
         // });
 
         // dd($post);
-        $post = Post::find($slug);
+        $post = Post::find($id);
         return view('post', ['title' => 'Single Post', 'post' => $post]);
 });
 
