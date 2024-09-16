@@ -38,7 +38,8 @@
         </a>
         <div class="text-base text-gray-500">
             {{-- <a href="#">{{ $post ['author_id'] }}</a> | {{ $post -> created_at -> diffForHumans() }} --}}
-            <a href="#">{{ $post->user->name }}</a> | {{ $post->created_at->diffForHumans() }}
+            {{-- <a href="#">{{ $post->user->name }}</a> | {{ $post->created_at->diffForHumans() }} --}}
+            <a class="hover:underline"href="/authors/{{ $post->user->id }}">{{ $post->user->name }}</a> | {{ $post->created_at->diffForHumans() }}
         </div>
         <p class="my-4 font-light">
             {{ Str::limit($post ['body'], 150) }}
