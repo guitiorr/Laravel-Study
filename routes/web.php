@@ -38,10 +38,10 @@ Route::get('/contact', function() {
 });
 
 
-Route::get('/authors/{user}', function(User $user){
+Route::get('/authors/{user:username}', function(User $user){
         return view('posts', ['title' => 'Articles by '. $user->name, 'posts' => $user->posts]);
 });
 
-Route::get('/categories/{category}', function(Category $category){
+Route::get('/categories/{category:slug}', function(Category $category){
         return view('posts', ['title' => 'Articles with category '. $category->name, 'posts' => $category->posts]);
 });
