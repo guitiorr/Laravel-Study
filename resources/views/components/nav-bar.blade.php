@@ -13,7 +13,7 @@
                             class=" {{ request() -> is('/') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}"
                             aria-current="page">Home</a> --}}
                             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                            <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>
+                            <x-nav-link href="/posts" :active="request()->is('posts') || request()->is('authors*') || request()->is('categories*')">Blog</x-nav-link>
                             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
                             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
 
