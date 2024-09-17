@@ -36,10 +36,10 @@
         <a href="/posts/{{ $post ['slug'] }}" class="hover:underline">
             <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $post ['title'] }}</h2>
         </a>
-        <div class="text-base text-gray-500">
+        <div class="text-base text-black">
             {{-- <a href="#">{{ $post ['author_id'] }}</a> | {{ $post -> created_at -> diffForHumans() }} --}}
             {{-- <a href="#">{{ $post->user->name }}</a> | {{ $post->created_at->diffForHumans() }} --}}
-            <a class="hover:underline"href="/authors/{{ $post->user->username }}">{{ $post->user->name }}</a> in <a class="hover:underline"href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a> | {{ $post->created_at->diffForHumans() }}
+            <a class="hover:underline text-gray-500"href="/authors/{{ $post->user->username }}">{{ $post->user->name }}</a> in <a class="hover:underline text-gray-500"href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a> | {{ $post->created_at->diffForHumans() }}
         </div>
         <p class="my-4 font-light">
             {{ Str::limit($post ['body'], 150) }}
