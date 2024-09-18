@@ -25,16 +25,18 @@ Route::get('/about', function() {
 
 Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/posts/{post:slug}', function(Post $post){
-    //  dd($id);
-        // $post = Arr::first(Post::all(), function($post) use ($slug) {
-        //     return $post['slug'] == $slug;
-        // });
+// Route::get('/posts/{post:slug}', function(Post $post){
+//     //  dd($id);
+//         // $post = Arr::first(Post::all(), function($post) use ($slug) {
+//         //     return $post['slug'] == $slug;
+//         // });
 
-        // dd($post);
-        // $post = Post::find($id);
-        return view('post', ['title' => $post->title, 'post' => $post]);
-});
+//         // dd($post);
+//         // $post = Post::find($id);
+//         return view('post', ['title' => $post->title, 'post' => $post]);
+// });
+
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/contact', function() {
     return view('contact', ['title' => 'Contact']);
