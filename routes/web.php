@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -18,9 +19,11 @@ Route::get('/about', function() {
     return view('about', ['nama' => 'Tio'], ['title' => 'About']);
 });
 
-Route::get('/posts', function() {
-    return view('posts', ['title' => 'Posts', 'posts' => Post::all()]);
-});
+// Route::get('/posts', function() {
+//     // return view('posts', ['title' => 'Posts', 'posts' => Post::all()]);
+// });
+
+Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/posts/{post:slug}', function(Post $post){
     //  dd($id);
