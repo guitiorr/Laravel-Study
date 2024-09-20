@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -20,14 +21,19 @@ class PostController extends Controller
         // }
         // $posts = Post::with(['user','category'])->latest()->get();
 
-        $posts = Post::filter(request(['search', 'category']))->latest();
+        $posts = Post::filter(request(['search', 'category', 'author']))->latest();
 
         $postCount = $posts->count();
 
         $title = 'Posts';
 
         if ($category = request('category')) {
-            $title = $postCount . ' Posts in ' . Category::where('slug', $category)->first()->name;
+            $categoryData = Category::where('slug', $category)->first();
+            $title = $postCount . ' Posts in ' . ($categoryData ? $categoryData->name : 'Unknown Category');
+        }
+        else if ($user = request('author')) {
+            $userData = User::where('username', $user)->first();
+            $title = 'Posts by ' . ($userData ? $userData->name : 'Unknown User');
         }
 
         return view('posts', ['title' => "$title", 'posts' => $posts->get()]);

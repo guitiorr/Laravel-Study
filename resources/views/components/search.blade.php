@@ -27,6 +27,9 @@
             @if(request('category'))
                 <input type="hidden" name="category" value="{{ request('category') }}">
             @endif
+            @if(request('author'))
+                <input type="hidden" name="category" value="{{ request('author') }}">
+            @endif
         </form>
     </div>
 </div>

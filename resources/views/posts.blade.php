@@ -86,7 +86,7 @@
                                     <img class="w-7 h-7 rounded-full"
                                         src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                                         alt="Jese Leos avatar" />
-                                    <a href="/authors/{{ $post->user->username }}" class="hover:underline">
+                                    <a href="/posts?author={{ $post->user->username }}" class="hover:underline">
                                         <span class="font-medium text-sm dark:text-white">
                                             {{ $post->user->name }}
                                         </span>
