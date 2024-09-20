@@ -72,8 +72,10 @@
                                 </a>
                                 <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
                             </div>
-                            <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
-                                    href="#">How to quickly deploy a static website</a></h2>
+                            <a href="/posts/{{ $post->slug }}" class="hover:underline">
+                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        {{ $post->title }}</h2>
+                            </a>
                             <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
                                 {{ Str::limit($post->body, 150) }}
                             </p>
@@ -82,7 +84,7 @@
                                     <img class="w-7 h-7 rounded-full"
                                         src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                                         alt="Jese Leos avatar" />
-                                    <a href="/authors/{{ $post->user->username }}" class="">
+                                    <a href="/authors/{{ $post->user->username }}" class="hover:underline">
                                         <span class="font-medium dark:text-white">
                                             {{ $post->user->name }}
                                         </span>
