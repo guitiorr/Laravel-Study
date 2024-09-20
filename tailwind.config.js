@@ -50,7 +50,9 @@ export default {
         },
 
     },
-    plugins: [require('flowbite/plugin')],
+    plugins: [require('flowbite/plugin'),
+        require('flowbite-typography')
+    ],
     safelist: [
         'bg-green-100',
         'bg-red-100',
