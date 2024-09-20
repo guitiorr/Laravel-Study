@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name', 'slug', 'color'];
 
     public function posts(): HasMany{
         return $this->hasMany(Post::class, 'category_id');

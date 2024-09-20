@@ -19,7 +19,8 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => fake()->sentence(3, false),
-            'slug' => Str::slug(fake()->sentence())
+            'slug' => Str::slug(fake()->sentence()),
+            'color' => fake()->colorName()
         ];
     }
 }
