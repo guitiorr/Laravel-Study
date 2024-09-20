@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -12,13 +13,24 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest();
+        // $posts = Post::latest();
         // dump(request('search'));
-        if(request('search')){
-            $posts->where('title', 'like', '%' . request('search') . '%');
-        }
+        // if(request('search')){
+        //     $posts->where('title', 'like', '%' . request('search') . '%');
+        // }
         // $posts = Post::with(['user','category'])->latest()->get();
-        return view('posts', ['title' => 'Posts', 'posts' => $posts->get()]);
+
+        $posts = Post::filter(request(['search', 'category']))->latest();
+
+        $postCount = $posts->count();
+
+        $title = 'Posts';
+
+        if ($category = request('category')) {
+            $title = $postCount . ' Posts in ' . Category::where('slug', $category)->first()->name;
+        }
+
+        return view('posts', ['title' => "$title", 'posts' => $posts->get()]);
     }
 
     /**
