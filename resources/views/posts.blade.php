@@ -28,6 +28,7 @@
 
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
+    <x-search></x-search>
     {{-- <h3 class="">Welcome to my blog!</h3> --}}
 
         <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-0">
