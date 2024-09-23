@@ -37,7 +37,7 @@ class PostController extends Controller
         }
 
         // return view('posts', ['title' => "$title", 'posts' => $posts->get()]);
-        return view('posts', ['title' => "$title", 'posts' => $posts->paginate(6)]);
+        return view('posts', ['title' => "$title", 'posts' => $posts->paginate(6)->withQueryString()]);
     }
 
     /**
