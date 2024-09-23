@@ -29,10 +29,12 @@ class RegisterController extends Controller
 
         $validated['password'] = bcrypt($validated['password']);
 
-        // dd($request);
-        // return $request->all();
         User::create($validated);
+
+        // Use 'with' to flash the success message to the session
+        return redirect('/login')->with('success', 'Please Login');
     }
+
 
     /**
      * Display the specified resource.
