@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
@@ -52,3 +53,5 @@ Route::get('/categories/{category:slug}', function(Category $category){
         // $posts = $category->posts->load('category', 'user');
         return view('posts', ['title' => count($category->posts). ' Articles with category '. $category->name, 'posts' => $category->posts]);
 });
+
+Route::get('/login', [LoginController::class, 'index']);

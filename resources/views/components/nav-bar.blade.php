@@ -16,6 +16,7 @@
                             <x-nav-link href="/posts" :active="request()->is('posts') || request()->is('authors*') || request()->is('categories*')">Blog</x-nav-link>
                             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
                             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+                            <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
 
                         {{-- <a href="/blog"
                         class=" {{ request() -> is('blog') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Blog</a>

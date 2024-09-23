@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
-export default {
-    darkMode: 'class',
+module.exports = {
+    darkMode: 'class', // Enable dark mode using class strategy
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
-        "./node_modules/flowbite/**/*.js",
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+        './node_modules/flowbite/**/*.js',
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php'
     ],
     theme: {
@@ -29,9 +29,8 @@ export default {
                     'Apple Color Emoji',
                     'Segoe UI Emoji',
                     'Segoe UI Symbol',
-                    'Noto Color Emoji'
+                    'Noto Color Emoji',
                 ],
-
             },
             colors: {
                 primary: {
@@ -46,18 +45,19 @@ export default {
                     "800": "#1e40af",
                     "900": "#1e3a8a",
                     "950": "#172554"
-                }
-            }
+                },
+            },
         },
-
     },
-    plugins: [require('flowbite/plugin'),
-        require('flowbite-typography')
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('flowbite/plugin'),
+        require('flowbite-typography'),
     ],
     safelist: [
         'bg-green-100',
         'bg-red-100',
         'bg-blue-100',
-        'bg-yellow-100'
+        'bg-yellow-100',
     ],
-}
+};
