@@ -27,6 +27,8 @@ class RegisterController extends Controller
             'name' => 'required|min:3|max:255'
         ]);
 
+        $validated['password'] = bcrypt($validated['password']);
+
         // dd($request);
         // return $request->all();
         User::create($validated);
