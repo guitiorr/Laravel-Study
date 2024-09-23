@@ -36,7 +36,8 @@ class PostController extends Controller
             $title = 'Posts by ' . ($userData ? $userData->name : 'Unknown User');
         }
 
-        return view('posts', ['title' => "$title", 'posts' => $posts->get()]);
+        // return view('posts', ['title' => "$title", 'posts' => $posts->get()]);
+        return view('posts', ['title' => "$title", 'posts' => $posts->paginate(6)]);
     }
 
     /**
