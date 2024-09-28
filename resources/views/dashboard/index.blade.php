@@ -7,6 +7,8 @@
     <title>Dashboard</title>
 </head>
 <body>
-
+    @auth
+        <h3>Welcome to your dashboard, {{ auth()->user()->name }}</h3>
+    @endauth
 </body>
 </html>
