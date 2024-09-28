@@ -16,7 +16,12 @@
                             <x-nav-link href="/posts" :active="request()->is('posts') || request()->is('authors*') || request()->is('categories*')">Blog</x-nav-link>
                             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
                             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+
+                            @auth
+                            @else
                             <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
+                            @endauth
+
 
                         {{-- <a href="/blog"
                         class=" {{ request() -> is('blog') ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Blog</a>
@@ -42,6 +47,7 @@
                         </svg>
                     </button> --}}
 
+                @auth
                     <!-- Profile dropdown -->
                     <div class="relative ml-3">
                         <div>
@@ -77,7 +83,7 @@
                             tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                                tabindex="-1" id="user-menu-item-0">My Dashboard</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-1">Settings</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
@@ -108,6 +114,8 @@
             </div>
         </div>
     </div>
+                @endauth
+
 
     <!-- Mobile menu, show/hide based on menu state. -->
     <div x-show="isOpen" class="md:hidden" id="mobile-menu">
