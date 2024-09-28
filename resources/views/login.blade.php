@@ -8,28 +8,6 @@
 </head>
 
 <body>
-    <!--
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-    <!--
-  This example requires updating your template:
-
-  ```
-  <html class="h-full bg-white">
-  <body class="h-full">
-  ```
--->
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -45,14 +23,28 @@
             </div>
         @endif
 
+        @if (session('loginError'))
+            <div class="mt-4 max-w-md mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{ session('loginError') }}</span>
+            </div>
+        @endif
+
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form class="space-y-6" action="#" method="POST">
+            <form class="space-y-6" action="/login" method="POST">
+                @csrf
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email
                         address</label>
+                        @error('email')
+                            <div class="invalid-feedback text-red-600">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     <div class="mt-2">
-                        <input id="email" name="email" type="email" autocomplete="email" required
+                        <input id="email" name="email" type="email" autocomplete="email" required autofocus value="{{ old('email') }}" @error('email')
+                            is-invalid
+                        @enderror
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
