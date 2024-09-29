@@ -18,7 +18,7 @@
                             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
 
                             @auth
-                            <x-nav-link href="/dashboard" :active="request()->is('contact')">Dashboard</x-nav-link>
+                            <x-nav-link href="/dashboard" :active="request()->is('dashboard') || request()->is('dashboard/posts*')">Dashboard</x-nav-link>
                             @else
                             <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
                             @endauth
