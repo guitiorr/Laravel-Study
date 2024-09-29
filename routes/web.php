@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -67,3 +68,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->middleware('auth');
+Route::get('/dashboard/posts/create', [DashboardPostController::class, 'create'])->middleware('auth');
