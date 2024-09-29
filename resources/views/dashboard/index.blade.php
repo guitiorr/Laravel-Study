@@ -7,8 +7,10 @@
     <title>Dashboard</title>
 </head>
 <body>
-    @auth
-        <h3>Welcome to your dashboard, {{ auth()->user()->name }}</h3>
-    @endauth
+
+    <x-layout>
+        <x-slot:title>Welcome to your dashboard, {{ auth()->user()->name }}</x-slot:title>
+        <a class="text-white bg-blue-500 p-1 rounded" href="/dashboard/posts?author={{ auth()->user()->username }}">View Posts</a>
+    </x-layout>
 </body>
 </html>

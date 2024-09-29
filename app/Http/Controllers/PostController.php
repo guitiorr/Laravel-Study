@@ -12,6 +12,10 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function dbPost(){
+        return view("dashboard.posts");
+    }
     public function index()
     {
         // $posts = Post::latest();

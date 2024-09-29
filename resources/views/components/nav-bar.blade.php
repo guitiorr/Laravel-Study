@@ -18,6 +18,7 @@
                             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
 
                             @auth
+                            <x-nav-link href="/dashboard" :active="request()->is('contact')">Dashboard</x-nav-link>
                             @else
                             <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
                             @endauth
@@ -84,6 +85,8 @@
                             <!-- Active: "bg-gray-100", Not Active: "" -->
                             <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-0">My Dashboard</a>
+                                <a href="/dashboard/posts" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                tabindex="-1" id="user-menu-item-0">My Posts</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-1">Settings</a>
 

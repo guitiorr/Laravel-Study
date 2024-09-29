@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,6 +13,13 @@ class DashboardController extends Controller
     public function index()
     {
         return view('dashboard.index');
+    }
+
+    public function posts(){
+
+        $posts = Post::filter(request(['author']))->latest();
+
+        return view("dashboard.posts", ['posts' => $posts->paginate(6)->withQueryString()]);
     }
 
     /**
