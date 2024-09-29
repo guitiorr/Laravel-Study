@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard - Create New Post</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
 </head>
 
 <body>
@@ -55,16 +57,19 @@
             <div>
                 <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
                 <div class="mt-2">
-                    <textarea id="body" name="body" rows="8" required
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                    <input id="body" type="hidden" name="body" required>
+                    <trix-editor input="body"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></trix-editor>
                 </div>
             </div>
+
 
             <!-- Submit Button -->
             <div class="mt-6 flex items-center justify-end gap-x-6">
                 <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
                 <button type="submit"
-                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create Post</button>
+                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create
+                    Post</button>
             </div>
         </form>
     </x-layout>
@@ -76,9 +81,9 @@
 
         title.addEventListener('change', function() {
             fetch('/dashboard/posts/checkSlug?title=' + encodeURIComponent(title.value)) // GET request
-            .then(response => response.json()) // Correct usage of .json()
-            .then(data => slug.value = data.slug)
-            .catch(error => console.error('Error:', error)); // Optional: Add error handling
+                .then(response => response.json()) // Correct usage of .json()
+                .then(data => slug.value = data.slug)
+                .catch(error => console.error('Error:', error)); // Optional: Add error handling
         });
     </script>
 
