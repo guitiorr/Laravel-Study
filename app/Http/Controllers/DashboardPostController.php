@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Auth;
+
 
 class DashboardPostController extends Controller
 {
@@ -21,9 +24,21 @@ class DashboardPostController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        return $request;
-    }
+{
+    $validatedData = $request->validate([
+        'title' => 'required|max:255',
+        'slug' => 'required|unique:posts',
+        'category_id' => 'required',
+        'body' => 'required'
+    ]);
+
+    // Use Auth to get the currently logged-in user's ID
+    $validatedData['author_id'] = Auth::user()->id;
+
+    Post::create($validatedData);
+
+    return redirect('/dashboard/posts')->with('success', 'New post added successfully');
+}
 
     public function create(){
         return view('dashboard.posts.create', [

@@ -15,15 +15,22 @@
     <x-layout>
         <x-slot:title>Create new post for user {{ auth()->user()->name }}</x-slot:title>
 
-        <form method="post" action="/dashboard/posts" class="space-y-8">
+        <form method="POST" action="/dashboard/posts" class="space-y-8">
             @csrf
 
             <!-- Post Title -->
             <div>
                 <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Post Title</label>
                 <div class="mt-2">
-                    <input type="text" name="title" id="title" required
+                    <input type="text" name="title" id="title" value="{{ old('title') }}" @error('title')
+                        is-invalid
+                    @enderror
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        @error('title')
+                            <div class="invalid-feedback text-red-500">
+                                {{ $message }}
+                            </div>
+                        @enderror
                 </div>
             </div>
 
@@ -31,8 +38,15 @@
             <div>
                 <label for="slug" class="block text-sm font-medium leading-6 text-gray-900">Slug</label>
                 <div class="mt-2">
-                    <input type="text" name="slug" id="slug" required
+                    <input type="text" name="slug" id="slug" value="{{ old('slug') }}" @error('slug')
+                        is-invalid
+                    @enderror
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        @error('slug')
+                            <div class="invalid-feedback text-red-500">
+                                {{ $message }}
+                            </div>
+                        @enderror
                 </div>
             </div>
 
@@ -40,7 +54,9 @@
             <div>
                 <label for="category" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
                 <div class="mt-2">
-                    <select name="category" id="category" required
+                    <select name="category_id" id="category_id" value="{{ old('category_id') }}" required @error('category')
+                        is-invalid
+                    @enderror
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -50,6 +66,11 @@
                         <option value="tutorial">Tutorial</option>
                         <option value="update">Update</option> --}}
                     </select>
+                    @error('category text-red-500')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
 
@@ -57,9 +78,16 @@
             <div>
                 <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
                 <div class="mt-2">
-                    <input id="body" type="hidden" name="body" required>
+                    <input id="body" type="hidden" name="body" value="{{ old('body') }}" required @error('body')
+                        is-invalid
+                    @enderror>
                     <trix-editor input="body"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></trix-editor>
+                        @error('body')
+                            <div class="invalid-feedback text-red-500">
+                                {{ $message }}
+                            </div>
+                        @enderror
                 </div>
             </div>
 
@@ -81,9 +109,9 @@
 
         title.addEventListener('change', function() {
             fetch('/dashboard/posts/checkSlug?title=' + encodeURIComponent(title.value)) // GET request
-                .then(response => response.json()) // Correct usage of .json()
+                .then(response => response.json())
                 .then(data => slug.value = data.slug)
-                .catch(error => console.error('Error:', error)); // Optional: Add error handling
+                .catch(error => console.error('Error:', error));
         });
     </script>
 
