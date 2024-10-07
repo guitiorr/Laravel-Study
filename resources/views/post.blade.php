@@ -1,28 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog Page</title>
-    <link rel="stylesheet" href="css/styleblog.css">
-</head>
-<body>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/blog">Blog</a>
-    <a href="/contact" class="">Contact</a>
-    <div id="head">
-        <h1 class="">CHON</h1>
-        <img src="img/vroh.png" alt="" class="">
-    </div>
-    <div id="content">
-        <p class="">
-            Chon (sometimes stylized as CHON) was an American progressive rock band from Oceanside, California. Their music is largely instrumental with only a few songs containing vocal performances. The final line up of the band consisted of Mario Camarena (guitar), Erick Hansel (guitar), Esiah Camarena (bass) and Nathan Camarena (drums).
-        </p>
-    </div>
-</body>
-</html> --}}
 <x-layout>
     <x-slot:title>{{ $post->title }}</x-slot:title>
     <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
@@ -49,16 +24,7 @@
                         </div>
                     </address>
 
-                    <!-- Delete button for post owner -->
-                    @if (auth()->check() && auth()->user()->id === $post->user->id)
-                        <form action="/posts/{{ $post->slug }}" method="POST" class="mb-4">
-                            @csrf
-                            @method('DELETE')
-                            <button onclick="return confirm('Are you sure?')" type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                Delete Post
-                            </button>
-                        </form>
-                    @endif
+                    <x-delete-button :post="$post" />
 
                     <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ $post->title }}</h1>
                 </header>

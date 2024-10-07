@@ -54,14 +54,15 @@
                             </a>
                         </div>
                         <div class="flex items-center space-x-4">
-                            <form action="/posts/{{ $post->slug }}/delete" method="POST">
+                            <x-delete-button :post="$post" />
+                            {{-- <form action="/posts/{{ $post->slug }}/delete" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('Are you sure?')"
                                     class="inline-flex items-center font-medium text-red-600 dark:text-red-500 hover:underline text-sm">
                                     Delete
                                 </button>
-                            </form>
+                            </form> --}}
                             <a href="/posts/{{ $post->slug }}"
                                 class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline text-sm">
                                 Read more
