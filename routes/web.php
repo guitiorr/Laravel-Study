@@ -29,6 +29,8 @@ Route::get('/about', function() {
 
 Route::get('/posts', [PostController::class, 'index']);
 
+Route::post('/posts/{post:slug}', [PostController::class, 'destroy'])->middleware('auth');
+
 // Route::get('/posts/{post:slug}', function(Post $post){
 //     //  dd($id);
 //         // $post = Arr::first(Post::all(), function($post) use ($slug) {
@@ -71,6 +73,8 @@ Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->middlewar
 
 
 Route::post('/dashboard/posts', [DashboardPostController::class, 'store'])->middleware('auth');
+
+Route::delete('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'destroy'])->middleware('auth');
 
 
 Route::get('/dashboard/posts/create', [DashboardPostController::class, 'create'])->middleware('auth');
