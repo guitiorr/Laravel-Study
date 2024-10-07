@@ -1,5 +1,4 @@
 <div>
-    <!-- Delete button for post owner -->
     @if (auth()->check() && auth()->user()->id === $post->user->id)
     <form action="/posts/{{ $post->slug }}" method="POST" class="mb-4">
         @csrf
