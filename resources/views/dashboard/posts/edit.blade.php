@@ -15,7 +15,7 @@
     <x-layout>
         <x-slot:title>Edit post {{ $post->title }} user {{ auth()->user()->name }}</x-slot:title>
 
-        <form method="POST" action="/dashboard/posts" class="space-y-8">
+        <form method="POST" action="/dashboard/posts/{{ $post->slug }}" class="space-y-8">
             @method('PUT')
             @csrf
 
@@ -23,7 +23,7 @@
             <div>
                 <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Post Title</label>
                 <div class="mt-2">
-                    <input type="text" name="title" id="title" value="{{ old('title') }}" @error('title')
+                    <input type="text" name="title" id="title" value="{{ old('title', $post->title) }}" @error('title')
                         is-invalid
                     @enderror
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -39,7 +39,7 @@
             <div>
                 <label for="slug" class="block text-sm font-medium leading-6 text-gray-900">Slug</label>
                 <div class="mt-2">
-                    <input type="text" name="slug" id="slug" value="{{ old('slug') }}" @error('slug')
+                    <input type="text" name="slug" id="slug" value="{{ old('slug', $post->slug) }}" @error('slug')
                         is-invalid
                     @enderror
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -55,7 +55,7 @@
             <div>
                 <label for="category" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
                 <div class="mt-2">
-                    <select name="category_id" id="category_id" value="{{ old('category_id') }}" required @error('category')
+                    <select name="category_id" id="category_id" value="{{ old('category_id', $post->category->id) }}" required @error('category')
                         is-invalid
                     @enderror
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -79,7 +79,7 @@
             <div>
                 <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Body</label>
                 <div class="mt-2">
-                    <input id="body" type="hidden" name="body" value="{{ old('body') }}" required @error('body')
+                    <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}" required @error('body')
                         is-invalid
                     @enderror>
                     <trix-editor input="body"

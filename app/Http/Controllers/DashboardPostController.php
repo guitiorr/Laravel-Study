@@ -76,4 +76,11 @@ class DashboardPostController extends Controller
        return response()->json(['slug' => $slug]);
     }
 
+    public function edit(Post $post){
+        return view('dashboard.posts.edit', [
+            'post' => $post,
+            'categories' => Category::all()
+        ]);
+     }
+
 }
