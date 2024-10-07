@@ -57,7 +57,7 @@
                             <form action="/posts/{{ $post->slug }}/delete" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit"
+                                <button type="submit" onclick="return confirm('Are you sure?')"
                                     class="inline-flex items-center font-medium text-red-600 dark:text-red-500 hover:underline text-sm">
                                     Delete
                                 </button>
