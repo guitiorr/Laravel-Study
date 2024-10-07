@@ -55,6 +55,7 @@
                         </div>
                         <div class="flex items-center space-x-4">
                             <x-delete-button :post="$post" />
+                            <x-edit-button :post="$post" />
                             {{-- <form action="/posts/{{ $post->slug }}/delete" method="POST">
                                 @csrf
                                 @method('DELETE')
