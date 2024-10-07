@@ -75,6 +75,7 @@ Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->middlewar
 Route::post('/dashboard/posts', [DashboardPostController::class, 'store'])->middleware('auth');
 
 Route::delete('/dashboard/posts/{post:slug}', [DashboardPostController::class, 'destroy'])->middleware('auth');
+Route::put('/dashboard/posts/{post}', [DashboardPostController::class, 'update'])->middleware('auth');
 Route::get('/dashboard/posts/{post:slug}/edit', [DashboardPostController::class, 'edit'])->middleware('auth');
 
 

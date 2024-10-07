@@ -57,10 +57,29 @@ class DashboardPostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Retrieve the post to be updated
+        $post = Post::findOrFail($id);
+
+        // Validate the request data
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:posts,slug,' . $post->id, // Ignore the current post ID
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
+
+        // Set the author_id
+        $validatedData['author_id'] = Auth::user()->id;
+
+        // Update the post with the validated data
+        $post->update($validatedData);
+
+        // Redirect to the posts dashboard with success message
+        return redirect('/dashboard/posts')->with('success', 'Post updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
