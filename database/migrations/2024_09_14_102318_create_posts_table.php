@@ -23,6 +23,7 @@ return new class extends Migration
             // $table->unsignedBigInteger('author_id');
             // $table->foreign('author_id')->references('id')->on('users');
             $table->string('slug')->unique();
+            $table->string('image')->nullable();
             $table->text('body');
             $table->timestamps();
         });
