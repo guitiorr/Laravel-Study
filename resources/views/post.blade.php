@@ -28,9 +28,21 @@
 
                     <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ $post->title }}</h1>
                 </header>
+
+                <!-- Image Display -->
+                @if($post->image)
+                    <div class="mt-4">
+                        <img src="{{ asset($post->image) }}" alt="{{ $post->title }} image" class="w-full h-auto rounded-md">
+                    </div>
+                @else
+                    <p class="mt-4 text-gray-500">No image available for this post.</p>
+                @endif
+
                 <p class="lead">{{ $post->body }}</p>
+
+
+
             </article>
         </div>
     </main>
 </x-layout>
-
