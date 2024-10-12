@@ -25,6 +25,8 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
+        return $request->file('image')->store('post-images');
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
@@ -32,13 +34,10 @@ class DashboardPostController extends Controller
             'body' => 'required'
         ]);
 
-        // Use Auth to get the currently logged-in user's ID
         $validatedData['author_id'] = Auth::user()->id;
 
-        // Create the post
         Post::create($validatedData);
 
-        // Retrieve query parameters to maintain the filtering
         $query = $request->query();
 
         return redirect()->route('dashboard.posts', $query)
