@@ -24,21 +24,27 @@ class DashboardPostController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'title' => 'required|max:255',
-        'slug' => 'required|unique:posts',
-        'category_id' => 'required',
-        'body' => 'required'
-    ]);
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:posts',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
 
-    // Use Auth to get the currently logged-in user's ID
-    $validatedData['author_id'] = Auth::user()->id;
+        // Use Auth to get the currently logged-in user's ID
+        $validatedData['author_id'] = Auth::user()->id;
 
-    Post::create($validatedData);
+        // Create the post
+        Post::create($validatedData);
 
-    return redirect('/dashboard/posts')->with('success', 'New post added successfully');
-}
+        // Retrieve query parameters to maintain the filtering
+        $query = $request->query();
+
+        return redirect()->route('dashboard.posts', $query)
+            ->with('success', 'New post added successfully');
+    }
+
 
     public function create(){
         return view('dashboard.posts.create', [

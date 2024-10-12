@@ -85,7 +85,7 @@
                             <!-- Active: "bg-gray-100", Not Active: "" -->
                             <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-0">My Dashboard</a>
-                                <a href="/dashboard/posts" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                <a href="/dashboard/posts?author={{ auth()->user()->username }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-0">My Posts</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-1">Settings</a>

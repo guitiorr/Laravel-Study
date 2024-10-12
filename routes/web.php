@@ -69,8 +69,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->middleware('auth');
-
+Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->name('dashboard.posts')->middleware('auth');
 
 Route::post('/dashboard/posts', [DashboardPostController::class, 'store'])->middleware('auth');
 

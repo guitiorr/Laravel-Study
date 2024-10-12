@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -15,11 +16,27 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
-    public function posts(){
+    public function posts(Request $request)
+    {
+        if (Auth::check()) {
+            // Get the current logged-in user's username
+            $username = Auth::user()->username;
 
-        $posts = Post::filter(request(['author']))->latest();
+            // Generate the URL with the query string
+            $customUrl = url('/dashboard/posts') . '?author=' . $username;
 
-        return view("dashboard.posts", ['posts' => $posts->paginate(6)->withQueryString()]);
+            // Apply the filter based on the 'author' query parameter
+            $author = $request->query('author', $username);
+            $posts = Post::filter(['author' => $author])->latest();
+
+            // Pass the custom URL to the view
+            return view('dashboard.posts', [
+                'posts' => $posts->paginate(6)->withQueryString(),
+                'customUrl' => $customUrl // Pass custom URL to the view
+            ]);
+        }
+
+        return redirect('/login')->with('error', 'You must be logged in to view this page.');
     }
 
     /**
