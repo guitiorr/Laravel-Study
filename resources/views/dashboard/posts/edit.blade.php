@@ -78,7 +78,11 @@
             <!-- Post Image Upload -->
             <div>
                 <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Post Image</label>
-                <img class="img-preview img-fluid">
+                @if ($post->image)
+                    <img src="{{ asset('storage/'.$post->image) }}" class="img-preview img-fluid">
+                @else
+                    <img class="img-preview img-fluid">
+                @endif
                 <div class="mt-2">
                     <input onchange="previewImage()" type="file" name="image" id="image" accept="image/*" @error('image') is-invalid @enderror class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     @error('image')
