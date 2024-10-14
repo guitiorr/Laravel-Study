@@ -64,8 +64,9 @@
             <!-- Post Image Upload -->
             <div>
                 <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Post Image</label>
+                <img class="img-preview img-fluid">
                 <div class="mt-2">
-                    <input type="file" name="image" id="image" accept="image/*" @error('image') is-invalid @enderror class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input onchange="previewImage()" type="file" name="image" id="image" accept="image/*" @error('image') is-invalid @enderror class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     @error('image')
                         <div class="invalid-feedback text-red-500">
                             {{ $message }}
@@ -109,6 +110,22 @@
                 .then(data => slug.value = data.slug)
                 .catch(error => console.error('Error:', error));
         });
+
+        function previewImage(){
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+
     </script>
 
 </body>
