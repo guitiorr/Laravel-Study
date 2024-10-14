@@ -78,6 +78,7 @@
             <!-- Post Image Upload -->
             <div>
                 <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Post Image</label>
+                <input type="hidden" name="oldImage" value="{{ $post->image }}">
                 @if ($post->image)
                     <img src="{{ asset('storage/'.$post->image) }}" class="img-preview img-fluid">
                 @else

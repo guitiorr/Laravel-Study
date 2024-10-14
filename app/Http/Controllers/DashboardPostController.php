@@ -6,8 +6,9 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 
 class DashboardPostController extends Controller
@@ -82,6 +83,11 @@ class DashboardPostController extends Controller
         ]);
 
         if($request->file('image')){
+
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
