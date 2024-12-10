@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\LocalizationMiddleware;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -61,8 +62,8 @@ Route::get('/categories/{category:slug}', function(Category $category){
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -81,4 +82,22 @@ Route::get('/dashboard/posts/{post:slug}/edit', [DashboardPostController::class,
 Route::get('/dashboard/posts/create', [DashboardPostController::class, 'create'])->middleware('auth');
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+Route::middleware([LocalizationMiddleware::class])->group(function () {
+    // Return view localization
+    Route::get('/localization', function () {
+        return view('localization');
+    });
+
+    // Handle perubahan bahasa menggunakan parameter 'locale' dari URL.
+    Route::get('/lang/{locale}', function ($locale) {
+        // Checking condition ketika locale adalah 'en' atau 'id'
+        if (in_array($locale, ['en', 'id'])) {
+            //Simpan ke session
+            session(['locale' => $locale]);
+        }
+        // Reload page setelah mengubah bahasa.
+        return redirect()->back();
+    });
+});
 
